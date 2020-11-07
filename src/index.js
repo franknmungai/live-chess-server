@@ -2,7 +2,12 @@ const http = require('http');
 const socketio = require('socket.io');
 const express = require('express');
 const { addPlayer, game, removePlayer } = require('./game');
+const cors = require('cors');
+
 const app = express();
+
+app.get('/', (req, res) => res.send({ status: 'healthy' }));
+app.use(cors());
 const server = http.createServer(app);
 const PORT = 5000;
 const io = socketio(server);
