@@ -10,7 +10,8 @@ app.use(cors());
 app.use(express.json());
 app.get('/', (req, res) => res.send({ status: 'healthy' }));
 const server = http.createServer(app);
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
 const io = socketio(server);
 
 io.on('connection', (socket) => {
