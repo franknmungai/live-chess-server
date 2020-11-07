@@ -6,8 +6,9 @@ const cors = require('cors');
 
 const app = express();
 
-app.get('/', (req, res) => res.send({ status: 'healthy' }));
 app.use(cors());
+app.use(express.json());
+app.get('/', (req, res) => res.send({ status: 'healthy' }));
 const server = http.createServer(app);
 const PORT = 5000;
 const io = socketio(server);
